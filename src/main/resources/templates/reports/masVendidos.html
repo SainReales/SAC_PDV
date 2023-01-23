@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+<nav th:replace="layout/layout :: sidebar"></nav>
+
+<div class="container">
+    <div class="card-deck mt-2">
+        <div class="card">
+            <div class="card-header">
+                <span class="font-weight-bold">Users</span>
+            </div>
+            <div class="card-body">
+                <a th:href="@{'/masVendidos/export'}"><button class="text-danger"><span><i class="fas fa-file-pdf"></i></span></button> </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer> </footer>
+</body>
+</html>
+

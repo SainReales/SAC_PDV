@@ -1,0 +1,280 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SAC</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+    <link rel="icon" type="image/png" th:href="@{images/icons/favicon.ico}" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/main.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{css/estilos.css}" />
+    <script th:src="@{js/all.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>SAC</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="/img/logosac1.png" class="logo-sac" alt="logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#hero" id="inicio1">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portafolio" id="portfolio">Portafolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#quiensomos" id="quienssomos">¿Quienes somos?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto" id="contacto1">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}" id="login">Login</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <div class="content-center .topmargin-lg">
+                <h1>Figurados y laminados JM</h1>
+                <p>Metalurgia de la mas alta calidad</p>
+                <a href="#quiensomos" class="btn btn-ligth topmargin-sm">Conoce mas</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="portafolio">
+        <div class="container-fluid">
+            <div class="content-center">
+                <h2>PORTAFOLIO</h2>
+                <p>Conoce servivios que SAC puede ofrecerte</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="portafolio-container">
+                        <div class="portafolio-detalles">
+                            <a href="#">
+                                <h2>Figurados</h2>
+                            </a>
+                            <a href="#">
+                                <p>Producimos figurados resistentes para contruccion pesada</p>
+
+                        </div>
+                        <img src="img/figurados.jpg" class="img-fluid" alt="portafolio 1">
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="portafolio-container">
+                        <div class="portafolio-detalles">
+                            <a href="#">
+                                <h2>Laminados</h2>
+                            </a>
+                            <a href="#">
+                                <p>Elaboramos laminas en todo material y tama�o</p>
+
+                        </div>
+                        <img src="img/laminados.jpg" class="img-fluid" alt="portafolio 1">
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="portafolio-container">
+                        <div class="portafolio-detalles">
+                            <a href="#">
+                                <h2>Soldadura</h2>
+                            </a>
+                            <a href="#">
+                                <p>Manejamos todo tipo de tecnicas y materiales</p>
+
+                        </div>
+                        <img src="img/soldadura.jpg" class="img-fluid" alt="portafolio 1">
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="portafolio-container">
+                        <div class="portafolio-detalles">
+                            <a href="#">
+                                <h2>Fundicion</h2>
+                            </a>
+                            <a href="#">
+                                <p>Fundicion y transformacion de metales</p>
+
+                        </div>
+                        <img src="img/fundicion.jpg" class="img-fluid" alt="portafolio 1">
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="text-center margintop-sm">
+            <p>�Quieres adquirir nuestros servicios?</p>
+            <a href="#">Contactanos aqui</a>
+        </div>
+
+
+
+    </section>
+
+    <section id="quiensomos" class="bg-light-grey">
+        <div class="container">
+            <div class="content-center">
+                <h2>¿QUIENES SOMOS?</h2>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="vision-container">
+                        <div class="vision-detalles">
+                            <h5>VISION</h5>
+                            <span>Lograr la internacionalizaci�n de la
+                                empresa y cubrir la mayor parte de las
+                                necesidades inform�ticas que se
+                                encuentran en el mercado global.</span>
+                        </div>
+
+
+                        <img src="img/mision.jpg" class="img-fluid" alt="mision">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="vision-container">
+                        <div class="vision-detalles">
+                            <h5>MISION</h5>
+                            <span>Sistema Administrativo Condor (SAC),
+                                esta planeado para complementar y
+                                fortalecer las funciones administrativas
+                                y organizacionales de las empresas de
+                                cualquier sector, aportando soluciones
+                                informaticas.</span>
+                        </div>
+
+
+                        <img src="img/vision.jpg" class="img-fluid" alt="mision">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="vision-container">
+                        <div class="vision-detalles">
+                            <h5>SAC</h5>
+                            <span>El SAC es una empresa de soluciones informaticas dirigida al mercado de grandes y
+                                medianas empresas , con una variedad de areas de trabajo, ya que contamos con software
+                                de inventario, administracion de nomina y facturacion.</span>
+                        </div>
+
+
+                        <img src="img/sac.jpg" class="img-fluid" alt="mision">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contacto" class="divider">
+        <div class="container">
+            <div class="content-center">
+                <h2>Contactanos</h2>
+                <p>Ubicanos en el mapa o contactanos por estos medios</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 topmargin-sm">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7953.350581790317!2d-74.0673394651123!3d4.651875699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a45d9f1654b%3A0x3d69138572d157f2!2sSENA%20-%20Centro%20De%20Servicios%20Financieros!5e0!3m2!1ses!2sco!4v1630798946673!5m2!1ses!2sco"
+                        width="480" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                </div>
+
+                <div class="col-md-6 mt-4">
+                    <div class="col-lg-5">
+                        <div class="single_address">
+                            <i class="fa fa-map-marker"></i>
+                            <h4>Visitanos</h4>
+                            <p>Cra 72 # 31a-23</p>
+                        </div>
+                        <div class="single_address">
+                            <i class="fa fa-envelope"></i>
+                            <h4>Envianos en correo</h4>
+                            <p>figuradosjm@gmail.com</p>
+                        </div>
+                        <div class="single_address">
+                            <i class="fa fa-phone"></i>
+                            <h4>Llamanos</h4>
+                            <p>(+57) 3004456789</p>
+                        </div>
+                        <div class="single_address">
+                            <i class="fa fa-clock-o"></i>
+                            <h4>Horarios</h4>
+                            <p>Lun - Vie: 08.00 - 18.00. <br>Sab: 10.00 - 14.00</p>
+                        </div>
+                    </div><!--- END COL -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="footer" class="bg-dark">
+        <div class="container">
+            <img src="img/logo1blanco.png" class="logo-sac" alt="logo">
+            <div>
+                <p>Desarrollado por Sain Reales, Carlos Soto y Gabriel Forero</p>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

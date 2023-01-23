@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employees" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ea9d9eab-78ea-4cb9-adce-7588ae6a483e">
+
+	<field name="id" class="java.lang.Long">
+	</field>
+	<field name="name" class="java.lang.String">
+	</field>
+	<field name="price" class="java.lang.Double">
+	</field>
+	<field name="stock" class="java.lang.Integer">
+	</field>
+
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="86" splitType="Stretch">
+
+			<staticText>
+				<reportElement x="80" y="0" width="120" height="16" uuid="0c02ea73-39dc-4307-a434-082ff9360d04"/>
+				<text><![CDATA[Fiurados y Laminados JM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="20" width="210" height="16" uuid="63cc6437-82ec-4a43-a4da-e15999ecdd10"/>
+				<text><![CDATA[Direccion: Cr4 5-21 - Soacha - Cundinamarca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="80" height="16" uuid="46a21d1d-cec1-495c-9d75-df3ca8ca8a58"/>
+				<text><![CDATA[Fecha de reporte:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="420" y="1" width="90" height="15" uuid="1d48b455-8a0b-40bf-adad-d926373f0af6"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="510" y="0" width="50" height="16" uuid="332eed9a-23ec-4a50-811d-aa8ebd103c72"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="40" width="120" height="16" uuid="26bcd3af-d392-4035-9273-e8fa959251e4"/>
+				<text><![CDATA[Telefono: 300498876]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="56" width="150" height="16" uuid="4ef462ac-4b0f-42b7-a318-8c032f3a49c0"/>
+				<text><![CDATA[Email: laminadosjm@gmail.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="80" width="550" height="1" uuid="8503a505-b2ce-4b7c-b4dc-d5f1d08df4dc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="ca533965-9162-4dc2-8a9e-2c99b0db8e3e"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="55735968-342c-4d29-8dc1-db2263a44d11">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40a9814d-ecb4-424f-aea8-cad246f112b5"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e9b64414-ad92-4257-a8f2-63a23c460255">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="372fc4a5-58e8-4f68-9b0b-b8c92b4521d4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="12ce83f4-fe29-45f6-b1d5-5e016771ec1b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aafde1ac-9f21-4267-b383-ffd18072315c"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e2a0186b-afad-426b-b9f2-2152394df140">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c05cb4c4-7321-464e-b20b-38a19f892a19"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6d3e02fc-d8db-485a-96c9-54fa46d8a0ef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="95c0a1aa-91d9-473d-a271-b59d6dea0342"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="305d3455-6f0a-49e7-ad2a-055974675fd4"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="111" height="20" uuid="1324277f-1cf1-4cc2-a5f3-88ededc0ff6e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="40a9814d-ecb4-424f-aea8-cad246f112b5"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="111" y="0" width="111" height="20" uuid="b9c4d404-6ffe-47b5-aeaf-ee9ffb804c6a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="372fc4a5-58e8-4f68-9b0b-b8c92b4521d4"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="222" y="0" width="111" height="20" uuid="72ac64bb-1484-4b8a-8bdb-6ddcf6c57c70">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aafde1ac-9f21-4267-b383-ffd18072315c"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="333" y="0" width="111" height="20" uuid="c7d9f004-ba41-4c99-9a6c-cfbf3173864a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c05cb4c4-7321-464e-b20b-38a19f892a19"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+			</textField>
+
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="12" width="518" height="20" uuid="3867c2bc-a190-4ac0-bdef-159b52747018">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[Reporte generado en el sistema SAC(Sistema Administrarivo Condor) para la empresa Figurados y Laminados JM]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

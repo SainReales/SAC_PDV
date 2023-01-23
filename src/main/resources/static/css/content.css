@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+.mWraper {
+	height: 100%;
+}
+
+.content {
+	position: absolute;
+	top: 60px;
+	right: 0;
+	background: "f8f9fa";
+	width: calc(100% - 250px);
+}
+
+button {
+	max-height: 40px;
+	cursor: pointer;
+}
+
+.search-icon-box {
+	background: red;
+}
+
+.center {
+	text-align: center;
+}
+
+.modal {
+	z-index: 2000;
+}
+
+#navbarSupportedContent {
+	color: "white";
+}
+
+.invoiceHeader {
+	background: #123C69;
+	color: white;
+}
+
+.invoiceHeader nav {
+	padding: 15px 6%;
+}
+
+.header-create-invoice {
+	background: #123C69;
+	color: white;
+}
+
+.create-invoice-card, .details-invoice-card {
+	border: 2px solid #123C69;
+}
+
+.form-check-inline{
+	min-width: 20px;
+	margin-left:10px;
+}
+
+
+
+
+
+
+

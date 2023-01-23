@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>SAC</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+<link rel="stylesheet" th:href="@{/css/layout.css}" />
+<link rel="stylesheet" th:href="@{/css/content.css}" />
+<link rel="stylesheet" th:href="@{/css/all.css}" />
+<script th:src="@{js/all.js}" crossorigin="anonymous"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+	integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	crossorigin="anonymous"></script>
+<script th:src="@{js/bootstrap.min.js}" crossorigin="anonymous"></script>
+<script src="/js/dataTables/productDatatable.js"></script>
+<script src="/js/dataTables/clientDatatable.js"></script>
+<script src="/js/dataTables/invoicesDatatable.js"></script>
+<script src="/js/dataTables/usersDatatable.js"></script>
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<!--Login links - -->
+
+<!--Login links - -->
+</head>
+<body>
+
+	<header th:fragment="header">
+		<nav class="generalNav navbar navbar-expand-md navbar-light">
+			<div class="container-fluid">
+
+				<div class="collapse navbar-collapse d-flex justify-content-end"
+					id="navbarSupportedContent">
+					<ul class="navbar-nav navbar-right">
+						<li sec:authorize="isAuthenticated()" class="dropdown show"><a
+							class="btn btn-outline-primary dropdown-toggle" href="#"
+							role="button" id="dropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"><span class="mr-4"
+								sec:authentication="name"></span></a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<form id="logoutForm" th:action="@{/logout}" method="post">
+									<button class="dropdown-item"
+										onclick="document.getElementById('logoutForm').submit();"
+										type="submit">Sign Out</button>
+									<input type="hidden" th:name="${_csrf.parameterName}"
+										th:value="${_csrf.token}" />
+								</form>
+							</div></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</nav>
+	</header>
+
+	<!-- Sidebar  -->
+	<nav id="sidebar" th:fragment="sidebar">
+		<div class="sidebar-header">
+			<h3>Menu</h3>
+		</div>
+
+		<ul class="list-unstyled components">
+			<li sec:authorize="hasRole('ROLE_ADMIN')"><span><i
+					class="fas fa-user-tie"></i></span><a th:href="@{/users}">Usuarios</a></li>
+			<li><span><i class="fas fa-archive"></i></span><a
+				th:href="@{/products}">Productos</a></li>
+			<li><span><i class="fas fa-plus"></i></span><a
+				th:href="@{/createInvoice}">Nueva factura</a></li>
+			<li><span><i class="fas fa-user-tie"></i></span><a
+				th:href="@{/clients}">Clientes</a></li>
+			<li><span><i class="fas fa-tools"></i></span><a
+				th:href="@{/invoices}">Administrar factura</a></li>
+
+
+		</ul>
+	</nav>
+
+</body>
+</html>

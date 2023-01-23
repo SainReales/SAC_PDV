@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>SAC</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+    <link rel="icon" type="image/png" th:href="@{images/icons/favicon.ico}" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login/main.css}">
+    <link rel="stylesheet" th:href="@{/css/all.css}" />
+    <script th:src="@{js/all.js}"></script>
+    <script th:src="@{js/bootstrap.min.js}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="images/img-01.png" alt="IMG">
+            </div>
+
+            <form class="login100-form validate-form" th:action="@{/addUserE}" th:object="${user}" method="POST">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputName">Usuario</label> <input type="text"
+                                                                      class="form-control" id="inputName" th:field="*{username}"
+                                                                      required />
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="inputName">Contraseña</label> <input
+                            type="password" class="form-control" id="inputName"
+                            th:field="*{password}" required />
+                    </div>
+                </div>
+
+                <div class="form-row d-flex flex-row justify-content-between">
+                    <div class="form-group col-md-3 d-flex flex-column ml-4">
+                        <div class="">
+                            <p>Roles del usuario</p>
+                        </div>
+                        <div class="ml-4">
+                            <input class="form-check-input" name="role_user" type="checkbox"
+                                   id="inlineCheckbox1" value="role_user" /> <label
+                                class="form-check-label" for="inlineCheckbox1">User</label>
+                        </div>
+                        <div class="ml-4">
+                            <input class="form-check-input" name="role_admin"
+                                   type="checkbox" id="inlineCheckbox2" value="role_admin" /> <label
+                                class="form-check-label" for="inlineCheckbox2">Admin</label>
+                        </div>
+                    </div>
+                    <div class="form-group mr-5 align-self-end justify-content-end">
+                        <button type="submit" class="btn btn-primary btn-save-user">Guardar</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+</div>
+</body>
+</html>

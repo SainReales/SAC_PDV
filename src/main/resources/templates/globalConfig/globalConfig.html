@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<nav th:replace="layout/layout :: sidebar"></nav>
+
+	<div class="p-5 content justify-content-center">
+		<div th:replace="flashMessages :: flashMessages"></div>
+
+		<div class="card mb-4">
+			<div class="card-header">Configuracion Global</div>
+			<div class="card-body">
+				<form th:action="@{/saveGlobalConfig}" th:object="${globalConfig}"
+					method="post">
+					<div class="form-row">
+						<div class="form-group col-md-4">
+						  <input
+								type="hidden" class="form-control" id="configId"
+								th:field="*{id}" required/>
+							<label for="companyName">Nombre Empresa</label> <input
+								type="text" class="form-control" id="companyName"
+								th:field="*{companyName}" required/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="companyNit">NIT (Identificacion)</label> <input
+								type="text" class="form-control" id="companyNit"
+								th:field="*{companyNit}" required/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="companyAddress">Direccion Empresa</label> <input
+								type="text" class="form-control" id="companyAddress"
+								th:field="*{companyAddress}" required/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="companyPhone">Telefono Empresa</label> <input
+								type="text" class="form-control" id="companyPhone"
+								th:field="*{companyPhone}" required/>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="companyEmail">Correo Empresa</label> <input
+								type="text" class="form-control" id="companyEmail"
+								th:field="*{companyEmail}" required/>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-8">
+							<label for="invoiceFooter">Pie de Pagina Factura</label> <textarea
+								 rows="6" class="form-control" id="invoiceFooter"
+								th:field="*{invoiceFooter}" required> </textarea>
+						</div>
+						<div
+							class="form-group col-md-4 d-flex align-items-end justify-content-center">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+	<footer> </footer>
+</body>
+</html>

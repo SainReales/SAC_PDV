@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<nav th:replace="layout/layout :: sidebar"></nav>
+
+	<div class="p-5 content justify-content-center">
+		<div th:replace="flashMessages :: flashMessages"></div>
+
+
+		<div class="card mb-4">
+			<div class="card-header">Administrar Facturas
+			</div>
+			<div class="card-body">
+				<table id="invoicesTable" class="table display table-striped">
+					<!-- Header Table -->
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Descripcion</th>
+							<th>Cliente</th>
+							<th>Fecha</th>
+							<th>Vendedor</th>
+							<th>Total</th>
+							<th>Detalle</th>
+						</tr>
+					</thead>
+					<!-- Footer Table -->
+					<tfoot>
+						<tr>
+							<th>Id</th>
+							<th>Descripcion</th>
+							<th>Cliente</th>
+							<th>Fecha</th>
+							<th>Vendedor</th>
+							<th>Total</th>
+							<th>Detalle</th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+
+		<div class="card mb-4">
+			<div class="card-header">Reporte de productos mas vendidos</div>
+			<div class="card-body">
+
+				<form id="singleUploadForm" name="singleUploadForm" th:action="@{/reportProd/prod/download}" th:method="GET">
+					<label for="fecha1">Fecha 1</label>
+					<input type="text" class="form-control" id="fecha1" name="fecha1" required />
+
+					<label for="fecha2">Fecha 2</label>
+					<input type="text" class="form-control" id="fecha2"  name="fecha2" required />
+
+					<label for="tipo">tipo</label>
+					<input type="text" class="form-control" id="tipo"  name="tipo" required />
+
+
+					<input th:type="submit" class="primary submit-btn">Submit</input>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<footer> </footer>
+</body>
+</html>

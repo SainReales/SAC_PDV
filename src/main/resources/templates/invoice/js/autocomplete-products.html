@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<script type="text/javascript" th:fragment="javascript">
+		$(document).ready(function() {
+
+			$("#search_product").autocomplete({
+
+				source : function(request, response) {
+					$.ajax({
+						url : "/rest/productsByTerm/" + request.term,
+						dataType : "json",
+						data : {
+							term : request.term
+						},
+						success : function(data) {
+							response($.map(data, function(item) {
+								return {
+									value : item.id,
+									label : item.name,
+									price : item.price,
+									iva: item.iva,
+									stock: item.stock
+								};
+							}));
+						},
+					});
+				},
+				select : function(event, ui) {
+					
+					var price = Number(ui.item.price);
+					var itbis = price * (Number(ui.item.iva) / 100);
+					var stock = ui.item.stock;
+					
+					if(itemsHelper.hasProducto(ui.item.value)){
+						itemsHelper.incrementaCantidad(ui.item.value, ui.item.price, itbis, stock);
+						return false;
+					}
+					
+					var linea = $("#plantillaItemsFactura").html();
+					
+								
+					linea = linea.replace(/{ID}/g, ui.item.value);
+					linea = linea.replace(/{NOMBRE}/g, ui.item.label);
+					linea = linea.replace(/{ITBIS}/g,itbis);
+					linea = linea.replace(/{PRECIO}/g, ui.item.price);
+					linea = linea.replace(/{STOCK}/g, stock)
+					
+					
+					$("#cargarItemProductos tbody").append(linea);
+					itemsHelper.calcularImporte(ui.item.value, ui.item.price, 1, itbis);
+
+					return false;
+				}
+			});
+			
+			$("#search-client").autocomplete({
+
+				source : function(request, response) {
+					$.ajax({
+						url : "/rest/clientsByTerm/" + request.term,
+						dataType : "json",
+						data : {
+							term : request.term
+						},
+						success : function(data) {
+							response($.map(data, function(item) {
+								return {
+									value : item.id,
+									label : item.name +" "+ item.lastname
+								};
+							}));
+						},
+					});
+				},
+				select : function(event, ui) {
+					$("#search-client").val(ui.item.label);
+					$("#invoice-client").html(ui.item.label);
+					$("#client-id").val(ui.item.value);
+					return false;
+				}
+			});
+			
+			$("form").submit(function(){
+				$("#plantillaItemsFactura").remove();
+				return;
+			});
+
+		});
+		
+		var itemsHelper = {
+			calcularImporte: function(id, precio, cantidad, itbis, stock){
+				if(cantidad > stock){
+					alert("De este producto solo quedan "+ stock+ " disponibles en el inventario");
+					$("#cantidad_" + id).val(cantidad - 1);
+					return;
+				}
+				$("#total_importe_" + id).html(parseInt(precio) * parseInt(cantidad) + (itbis * cantidad));
+				var itb = itbis * cantidad;
+				$("#itbis_" + id).html(itb.toFixed(2));
+				this.calcularGranTotal();
+			},
+			hasProducto: function(id){
+				
+				var resultado = false;
+				
+				$('input[name="item_id[]"]').each(function(){
+					if(parseInt(id) == parseInt($(this).val()) ){
+						resultado = true;
+					}
+				});
+				return resultado;
+			},
+			incrementaCantidad: function(id, precio, itbis, stock){
+				var cantidad = $("#cantidad_" + id).val() ? parseInt($("#cantidad_" + id).val()) : 0;
+				$("#cantidad_" + id).val(++cantidad);
+				this.calcularImporte(id, precio, cantidad, itbis, stock);
+			},
+			eliminarLineaFactura: function(id){
+				$("#row_" + id).remove();
+				this.calcularGranTotal();
+			},
+			calcularGranTotal: function(){
+				var total = 0;
+				
+				$('span[id^="total_importe_"]').each(function(){
+					total += parseInt($(this).html());
+				});
+				
+				$('#gran_total').html(total);
+			}
+		}
+	</script>
+</body>
+</html>

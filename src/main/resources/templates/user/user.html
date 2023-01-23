@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<nav th:replace="layout/layout :: sidebar"></nav>
+
+	<div class="p-5 content justify-content-center">
+		<div th:replace="flashMessages :: flashMessages"></div>
+
+		<div class="card mb-4">
+			<div class="card-header">Registrar Usuario</div>
+			<div class="card-body">
+				<form th:action="@{/addUser}" th:object="${user}" method="post">
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="inputName">Usuario</label> <input type="text"
+								class="form-control" id="inputName" th:field="*{username}"
+								required />
+						</div>
+
+						<div class="form-group col-md-4">
+							<label for="inputName">Contraseña</label> <input
+								type="password" class="form-control" id="inputName"
+								th:field="*{password}" required />
+						</div>
+					</div>
+
+					<div class="form-row d-flex flex-row justify-content-between">
+						<div class="form-group col-md-3 d-flex flex-column ml-4">
+							<div class="">
+								<p>Roles del usuario</p>
+							</div>
+							<div class="ml-4">
+								<input class="form-check-input" name="role_user" type="checkbox"
+									id="inlineCheckbox1" value="role_user" /> <label
+									class="form-check-label" for="inlineCheckbox1">User</label>
+							</div>
+							<div class="ml-4">
+								<input class="form-check-input" name="role_admin"
+									type="checkbox" id="inlineCheckbox2" value="role_admin" /> <label
+									class="form-check-label" for="inlineCheckbox2">Admin</label>
+							</div>
+						</div>
+						<div class="form-group mr-5 align-self-end justify-content-end">
+							<button type="submit" class="btn btn-primary btn-save-user">Guardar</button>
+						</div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<table id="usersTable" class="table display table-striped">
+			<!-- Header Table -->
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Username</th>
+					<th>Status</th>
+					<th>Roles</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<!-- Footer Table -->
+			<tfoot>
+				<tr>
+					<th>Id</th>
+					<th>Username</th>
+					<th>Status</th>
+					<th>Roles</th>
+					<th>Actions</th>
+				</tr>
+			</tfoot>
+		</table>
+		<!--Delete Modal
+		<div class="modal fade" id="ModalDeleteUser" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Are you sure
+							you want to delete this user ?</h5>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancel</button>
+						<a id="BtnDeleteUser" href="">
+							<button type="button" class="btn btn-danger">Delete</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+		<!-- Edit Modal-->
+		<div class="modal fade" id="ModalEditUser" tabindex="-1" role="dialog"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<form th:action="@{/addUser}" th:object="${user}" method="post">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="user-id"
+									th:field="*{id}" required>
+							</div>
+							<div class="form-group">
+								<label for="edit-username" class="col-form-label">Username:</label>
+								<input type="text" class="form-control" id="edit-username"
+									th:field="*{username}" required>
+							</div>
+							<div class="form-group">
+								<label for="inputName">Contraseña</label> <input
+									type="password" class="form-control" id="inputName" name="editPassword"
+									/>
+							</div>
+							<div class="form-group ml-4">
+								<input class="form-check-input" name="status" type="checkbox"
+									id="edit-status" value="userStatus" /> <label class="form-check-label"
+									for="edit-status">Active</label>
+							</div>
+							<div class="form-group">
+								<div class="form-group  d-flex flex-column ml-4">
+									<div class="">
+										<p>Roles del usuario</p>
+									</div>
+									<div class="">
+										<input class="form-check-input" name="role_user"
+											type="checkbox" id="edit-role_user" value="role_user" /> <label
+											class="form-check-label" for="edit-role_user">User</label>
+									</div>
+									<div class="">
+										<input class="form-check-input" name="role_admin"
+											type="checkbox" id="edit-role_admin" value="role_admin" /> <label
+											class="form-check-label" for="edit-role_admin">Admin</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Edit</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<div class="card mb-4">
+			<div class="card-header">Reporte de usuarios con mas ventas</div>
+			<div class="card-body">
+
+				<form id="singleUploadForm" name="singleUploadForm" th:action="@{/report/users/download}" th:method="GET">
+					<label for="fecha1">Fecha 1</label>
+					<input type="text" class="form-control" id="fecha1" name="fecha1" required />
+
+					<label for="fecha2">Fecha 2</label>
+					<input type="text" class="form-control" id="fecha2"  name="fecha2" required />
+
+					<label for="tipo">tipo</label>
+					<input type="text" class="form-control" id="tipo"  name="tipo" required />
+
+
+					<input th:type="submit" class="primary submit-btn">Submit</input>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<footer> </footer>
+</body>
+</html>

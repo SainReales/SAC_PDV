@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<nav th:replace="layout/layout :: sidebar"></nav>
+
+	<div class="p-5 content justify-content-center">
+		<div th:replace="flashMessages :: flashMessages"></div>
+
+		<div class="card mb-4">
+			<div class="card-header">Registrar producto</div>
+			<div class="card-body">
+				<form th:action="@{/addProduct}" th:object="${product}"
+					method="post">
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="inputName">Nombre</label> <input type="text"
+								class="form-control" id="inputName" th:field="*{name}" required>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="price">Precio</label> <input type=number
+								class="form-control" id="price" th:field="*{price}" required>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="existencias">Existencias</label> <input type=number
+								class="form-control" id="existencias" th:field="*{stock}"
+								required>
+						</div>
+						<div class="form-group col-md-2">
+							<label for="iva">P.iva</label> <input type=number
+								class="form-control" id="iva" th:field="*{iva}" required>
+						</div>
+
+						<div
+							class="form-group col-md-2 d-flex align-items-end justify-content-center">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+		<table id="productsTable" class="table display table-striped">
+			<!-- Header Table -->
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Producto</th>
+					<th>Precio/u</th>
+					<th>Stock</th>
+					<th>Iva</th>
+					<th>Estado</th>
+					<th >Editar</th>
+				</tr>
+			</thead>
+			<!-- Footer Table -->
+			<tfoot>
+				<tr>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Stock</th>
+					<th>Iva</th>
+					<th>Status</th>
+					<th>Edit</th>
+				</tr>
+			</tfoot>
+		</table>
+		<!--Delete Modal -->
+		<div class="modal fade" id="ModalDeleteProduct" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Are you sure
+							you want to delete this product ?</h5>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<a id="BtnDeleteProduct" href="">
+							<button type="button" class="btn btn-danger">Delete</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Edit Modal -->
+		<div class="modal fade" id="ModalEditProduct" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<form th:action="@{/addProduct}" th:object="${product}" method="post">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
+							<div class="form-group">
+								<input type="hidden" class="form-control" id="product-id"
+									th:field="*{id}" required>
+							</div>
+							<div class="form-group">
+								<label for="edit-name" class="col-form-label">Nombre:</label> <input
+									type="text" class="form-control" id="edit-name"
+									th:field="*{name}" required>
+							</div>
+							<div class="form-group">
+								<label for="edit-price" class="col-form-label">Precio:</label> <input
+									type="number" class="form-control" id="edit-price"
+									th:field="*{price}" required>
+							</div>
+							<div class="form-group">
+								<label for="edit-existences" class="col-form-label">Existencias:</label>
+								<input type="number" class="form-control" id="edit-existences"
+									th:field="*{stock}" required>
+							</div>
+						
+							<div class="form-group">
+								<label for="edit-iva" class="col-form-label">P.Iva:</label> <input
+									type="number" class="form-control" id="edit-iva"
+									th:field="*{iva}" required>
+							</div>
+								<div class="form-group col-md-2 ml-2">
+								<input class="form-check-input" name="productStatus" type="checkbox"
+									id="edit-status-product" value="productStatus" /> <label
+									class="form-check-label" for="edit-status-product">Active</label>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Edit</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<footer> </footer>
+</body>
+</html>
+
